@@ -11,7 +11,7 @@ def on_callback(video_stream,total_size,bytes_remaining):
         bytes_downloaded=total_size-bytes_remaining
         percentage_completed=(bytes_downloaded/total_size)*100
         pbar["value"]+=int(percentage_completed)
-        proglabel.config(text=str(percentage_completed))
+        proglabel.config(text=str(int(percentage_completed)))
         pbar.update_idletasks()
         if bytes_downloaded>=total_size:
             proglabel.config(text="Successfully Downloaded")
@@ -63,7 +63,7 @@ class Mydown():
         for v in range(0,len(vid_aud),2):
             dwn[vid_aud[v]]=vid_aud[v+1]        
         global menu
-        menu=ttk.Combobox(self.window,text="Available Quality:",
+        menu=ttk.Combobox(self.window,
                           bootstyle="info",
                           state="readonly",
                          values=tuple(dwn.keys()))
